@@ -18,11 +18,16 @@ public class player : MonoBehaviour {
 	public LayerMask Action;
 	public static int flag =0;
 
+	public float nextTime;
+	public float interval = 1.0f;　　//点滅周期
+	public Renderer b = SkinnedMeshRenderer;
 
 
 	// Use this for initialization
 	void Start () {
-		
+		nextTime = Time.time;  //点滅機能
+		b = 
+			enabled;
 	}
 
 
@@ -47,7 +52,7 @@ public class player : MonoBehaviour {
 				boost --;
 			}
 		}	
-		text.text = "Boost :" +boost.ToString();
+		text.text = "通ります！！ :" +boost.ToString();
 
 		/*if (Input.GetKey (KeyCode.Space)) {
 			A.layer= Action;
@@ -56,12 +61,20 @@ public class player : MonoBehaviour {
 		else if (Input.GetKey(KeyCode.UpArrow)){
 			Action = A.layer;
 		}*/
-		if (Input.GetKey (KeyCode.Space)) {
-			flag = 1;
-			Debug.Log ("flagChange");
-			Invoke ("change", 3.5f);
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			if (sorry > 0) {
+				if (Time.time > nextTime) {
+					nextTime += interval;
+					renderer.enable
+				}
+			
+				flag = 1;
+				Debug.Log ("flagChange");
+				Invoke ("change", 3.5f);
+				sorry--;
+			}
 		}
-		text2.text = "Sorry :" +sorry.ToString();
+		text2.text = "すいません :" +sorry.ToString();
 
 	}
 
