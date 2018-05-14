@@ -20,14 +20,12 @@ public class player : MonoBehaviour {
 
 	public float nextTime;
 	public float interval = 1.0f;　　//点滅周期
-	public Renderer b = SkinnedMeshRenderer;
+	public Renderer b;
 
 
 	// Use this for initialization
 	void Start () {
 		nextTime = Time.time;  //点滅機能
-		b = 
-			enabled;
 	}
 
 
@@ -65,7 +63,7 @@ public class player : MonoBehaviour {
 			if (sorry > 0) {
 				if (Time.time > nextTime) {
 					nextTime += interval;
-					renderer.enable
+				
 				}
 			
 				flag = 1;
