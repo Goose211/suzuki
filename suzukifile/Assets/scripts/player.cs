@@ -26,6 +26,9 @@ public class player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		nextTime = Time.time;  //点滅機能
+
+
+	
 	}
 
 
