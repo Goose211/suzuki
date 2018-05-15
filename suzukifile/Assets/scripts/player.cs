@@ -9,7 +9,7 @@ public class player : MonoBehaviour {
 	public float slideSpeed =1.0f;
 
 	public Text text;
-	public int boost = 1;
+	public int boost = 3;
 
 	public Text text2;
 	public int sorry = 3;
@@ -18,17 +18,13 @@ public class player : MonoBehaviour {
 	public LayerMask Action;
 	public static int flag =0;
 
-	public float nextTime;
-	public float interval = 1.0f;　　//点滅周期
-	public Renderer b;
-
+	private float nextTime;
+	public float interval = 0.5f;　　//点滅周期
+	public Renderer b;              //bは、PlyaerのAssetのSkinnedMeshRendererを関連付けている
 
 	// Use this for initialization
 	void Start () {
 		nextTime = Time.time;  //点滅機能
-
-
-	
 	}
 
 
@@ -53,9 +49,8 @@ public class player : MonoBehaviour {
 				boost --;
 			}
 		}	
-		text.text = "通ります！！ :" +boost.ToString();
-
-		/*if (Input.GetKey (KeyCode.Space)) {
+		text.text = "ダッシュ(↓):" +boost.ToString();
+			/*if (Input.GetKey (KeyCode.Space)) {
 			A.layer= Action;
 
 		}
@@ -64,18 +59,18 @@ public class player : MonoBehaviour {
 		}*/
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			if (sorry > 0) {
-				if (Time.time > nextTime) {
-					nextTime += interval;
-				
-				}
-			
 				flag = 1;
 				Debug.Log ("flagChange");
 				Invoke ("change", 3.5f);
 				sorry--;
+				if (Time.time > nextTime) {
+					b.enabled = !b.enabled;
+					nextTime += interval;
+				}
+
 			}
 		}
-		text2.text = "すいません :" +sorry.ToString();
+		text2.text = "回避(Space):" +sorry.ToString();
 
 	}
 
